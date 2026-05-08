@@ -1,0 +1,39 @@
+# ============================================================
+# AI MACRO INTELLIGENCE SYSTEM — Requirements
+# ============================================================
+
+# Core
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Database
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0        # PostgreSQL (optionnel en Phase 1)
+
+# HTTP / APIs
+requests>=2.31.0
+feedparser>=6.0.0
+
+# NLP / IA
+transformers>=4.35.0
+torch>=2.0.0
+sentence-transformers>=2.2.0
+
+# Anthropic API (Claude)
+anthropic>=0.25.0
+
+# Dashboard
+streamlit>=1.30.0
+plotly>=5.18.0
+
+# Scraping (Phase 2+)
+beautifulsoup4>=4.12.0
+selenium>=4.15.0
+playwright>=1.40.0
+
+# Scheduling
+schedule>=1.2.0
+
+# Utils
+python-dotenv>=1.0.0
+tqdm>=4.66.0
