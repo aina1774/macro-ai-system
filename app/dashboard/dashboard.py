@@ -416,22 +416,85 @@ def render_dashboard():
 
     st.markdown('<div class="gold-divider"></div>', unsafe_allow_html=True)
 
-    # ── CORRELATIONS ──
-    st.markdown('<div class="section-header">◆ Corrélations des Scores</div>', unsafe_allow_html=True)
-    if not history.empty and len(history) > 2:
-        cols = [c for c in ["USD Strength","Inflation Pressure","Recession Risk","Fear Index"] if c in history.columns]
-        corr = history[cols].corr()
-        fig_c = go.Figure(go.Heatmap(
-            z=corr.values, x=corr.columns.tolist(), y=corr.index.tolist(),
-            colorscale=[[0,"#000000"],[0.5,"#8b6914"],[1,"#ffd700"]],
-            text=[[f"{v:.2f}" for v in row] for row in corr.values],
-            texttemplate="%{text}", textfont=dict(family="Orbitron",size=10,color="#000000"),showscale=True))
-        fig_c.update_layout(height=280,paper_bgcolor="#000000",plot_bgcolor="#000000",
-            font={"color":"#e8d5a3","family":"Orbitron","size":9},margin=dict(l=10,r=10,t=10,b=10),
-            xaxis=dict(color="#5a4a1a"),yaxis=dict(color="#5a4a1a"))
-        st.plotly_chart(fig_c, use_container_width=True, key="corr")
+    # ── RADAR ──
+    st.markdown('<div class="section-header">◆ Radar Macro — Vue Globale</div>', unsafe_allow_html=True)
+    if scores:
+        categories = ["USD Strength", "Inflation Pressure", "Recession Risk", "Fear Index"]
+        values = [
+            scores["usd_strength"],
+            scores["inflation_pressure"],
+            scores["recession_risk"],
+            scores["fear_index"],
+        ]
+        # Fermer le polygone
+        categories_closed = categories + [categories[0]]
+        values_closed = values + [values[0]]
+
+        fig_radar = go.Figure()
+
+        # Zone de fond 50%
+        fig_radar.add_trace(go.Scatterpolar(
+            r=[50, 50, 50, 50, 50],
+            theta=categories_closed,
+            fill="toself",
+            fillcolor="rgba(139,105,20,0.05)",
+            line=dict(color="#3d2e00", width=1, dash="dot"),
+            name="Neutre (50)",
+            showlegend=False,
+        ))
+
+        # Scores actuels
+        fig_radar.add_trace(go.Scatterpolar(
+            r=values_closed,
+            theta=categories_closed,
+            fill="toself",
+            fillcolor="rgba(255,215,0,0.15)",
+            line=dict(color="#ffd700", width=2),
+            marker=dict(size=8, color="#ffd700", symbol="circle",
+                        line=dict(color="#c8960c", width=2)),
+            name="Scores actuels",
+            showlegend=False,
+            hovertemplate="<b>%{theta}</b><br>Score: %{r:.0f}<extra></extra>",
+        ))
+
+        fig_radar.update_layout(
+            height=320,
+            paper_bgcolor="#000000",
+            plot_bgcolor="#000000",
+            font={"color":"#e8d5a3","family":"Orbitron","size":9},
+            margin=dict(l=60,r=60,t=40,b=40),
+            polar=dict(
+                bgcolor="#080600",
+                radialaxis=dict(
+                    visible=True,
+                    range=[0,100],
+                    tickvals=[0,25,50,75,100],
+                    tickfont=dict(size=7,color="#5a4a1a",family="Orbitron"),
+                    gridcolor="#1a1200",
+                    linecolor="#3d2e00",
+                ),
+                angularaxis=dict(
+                    tickfont=dict(size=8,color="#8b6914",family="Orbitron"),
+                    gridcolor="#1a1200",
+                    linecolor="#3d2e00",
+                ),
+            ),
+        )
+
+        # Annotations valeurs
+        for i, (cat, val) in enumerate(zip(categories, values)):
+            col_v = score_color(val)
+
+        st.plotly_chart(fig_radar, use_container_width=True, key="radar")
+
+        # Scores sous le radar
+        r1, r2, r3, r4 = st.columns(4)
+        for col, cat, val in zip([r1,r2,r3,r4], categories, values):
+            with col:
+                c = score_color(val)
+                st.markdown(f'<div style="text-align:center;background:#080600;border:1px solid #1a1200;border-radius:6px;padding:6px;"><div style="font-family:Orbitron;font-size:0.55rem;color:#5a4a1a;">{cat.upper()}</div><div style="font-family:Orbitron;font-size:1.1rem;font-weight:700;color:{c};">{val:.0f}</div></div>', unsafe_allow_html=True)
     else:
-        st.info("Disponible après plusieurs cycles de collecte.")
+        st.info("Aucun score disponible.")
 
     st.markdown('<div class="gold-divider"></div>', unsafe_allow_html=True)
 
