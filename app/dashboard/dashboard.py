@@ -137,7 +137,7 @@ def load_calendar():
         r = requests.get(url, timeout=10)
         if r.status_code == 200:
             data = r.json().get("economicCalendar", [])
-            allowed = {"us","eu","de","fr","gb","it","es"}
+            allowed = {"us","eu","de","fr","it","es"}
             return [e for e in data if e.get("impact","").lower() == "high" and e.get("country","").lower() in allowed]
         return []
     except Exception:
