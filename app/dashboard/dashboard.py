@@ -403,15 +403,26 @@ def render_dashboard():
             h = scores.get("hawkish_pct",0)
             d = scores.get("dovish_pct",0)
             n = max(0,100-h-d)
-            fig_t = go.Figure(go.Bar(x=["Hawkish","Dovish","Neutral"],y=[h,d,n],
+            fig_t = go.Figure()
+            fig_t.add_trace(go.Bar(
+                y=["Hawkish","Dovish","Neutral"],
+                x=[h,d,n],
+                orientation="h",
                 marker_color=["#ef5350","#26c6da","#ffd700"],
-                text=[f"{v:.0f}%" for v in [h,d,n]],textposition="auto",
-                textfont=dict(family="Orbitron",size=9)))
-            fig_t.update_layout(height=280,paper_bgcolor="#000000",plot_bgcolor="#080600",
+                text=[f"{v:.0f}%" for v in [h,d,n]],
+                textposition="auto",
+                textfont=dict(family="Orbitron",size=10,color="#000000"),
+            ))
+            fig_t.update_layout(
+                height=200,
+                paper_bgcolor="#000000",
+                plot_bgcolor="#080600",
                 font={"color":"#e8d5a3","family":"Orbitron","size":9},
-                margin=dict(l=10,r=10,t=10,b=10),showlegend=False,
-                yaxis=dict(gridcolor="#1a1200",color="#5a4a1a"),
-                xaxis=dict(gridcolor="#1a1200",color="#5a4a1a"))
+                margin=dict(l=10,r=10,t=10,b=10),
+                showlegend=False,
+                xaxis=dict(range=[0,100],gridcolor="#1a1200",color="#5a4a1a",tickfont=dict(size=8)),
+                yaxis=dict(gridcolor="#1a1200",color="#8b6914",tickfont=dict(size=9,family="Orbitron")),
+            )
             st.plotly_chart(fig_t, use_container_width=True, key="tone")
 
     st.markdown('<div class="gold-divider"></div>', unsafe_allow_html=True)
@@ -552,6 +563,168 @@ def render_dashboard():
         """, unsafe_allow_html=True)
     else:
         st.info("Aucune news. Lancez `python main.py --collect`")
+
+    st.markdown('<div class="gold-divider"></div>', unsafe_allow_html=True)
+
+    # ── CALENDRIER ECONOMIQUE ──
+    st.markdown('<div class="section-header">◆ Calendrier Économique — Événements HIGH Impact</div>', unsafe_allow_html=True)
+
+    @st.cache_data(ttl=3600)
+    def load_calendar():
+        try:
+            import requests
+            from datetime import datetime, timedelta
+            today = datetime.utcnow().strftime("%Y-%m-%d")
+            end = (datetime.utcnow() + timedelta(days=30)).strftime("%Y-%m-%d")
+            url = f"https://finnhub.io/api/v1/calendar/economic?from={today}&to={end}&token={os.getenv('FINNHUB_KEY','')}"
+            r = requests.get(url, timeout=10)
+            if r.status_code == 200:
+                data = r.json().get("economicCalendar", [])
+                return [e for e in data if e.get("impact","").lower() == "high"]
+            return []
+        except Exception:
+            return []
+
+    calendar = load_calendar()
+
+    if calendar:
+        impact_map = {"high": "🔴 HIGH", "medium": "🟡 MED", "low": "⚪ LOW"}
+        cal_rows = ""
+        for event in calendar[:25]:
+            date_str = event.get("time", event.get("date","?"))[:10]
+            try:
+                from datetime import datetime
+                dt = datetime.strptime(date_str, "%Y-%m-%d")
+                date_fmt = dt.strftime("%d/%m/%Y")
+            except Exception:
+                date_fmt = date_str
+            name = event.get("event", event.get("name","?"))[:60]
+            country = event.get("country","?").upper()
+            actual = event.get("actual","—")
+            forecast = event.get("estimate", event.get("forecast","—"))
+            prev = event.get("prev","—")
+            impact = impact_map.get(event.get("impact","low").lower(), "⚪ LOW")
+
+            cal_rows += f"""
+            <tr style="border-bottom:1px solid #1a1200;">
+                <td style="padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#8b6914;white-space:nowrap;">{date_fmt}</td>
+                <td style="padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#ffd700;white-space:nowrap;">{country}</td>
+                <td style="padding:8px 12px;font-family:Rajdhani;font-size:0.82rem;color:#e8d5a3;">{name}</td>
+                <td style="padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#00e676;">{actual}</td>
+                <td style="padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#ffd700;">{forecast}</td>
+                <td style="padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#5a4a1a;">{prev}</td>
+                <td style="padding:8px 12px;font-family:Orbitron;font-size:0.65rem;">{impact}</td>
+            </tr>"""
+
+        st.markdown(f"""
+        <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;background:#080600;border:1px solid #3d2e00;border-radius:8px;">
+            <thead>
+                <tr style="background:linear-gradient(135deg,#1a1200,#2a1e00);border-bottom:1px solid #c8960c;">
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;letter-spacing:0.1em;">DATE</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;letter-spacing:0.1em;">PAYS</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;letter-spacing:0.1em;">ÉVÉNEMENT</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;letter-spacing:0.1em;">ACTUEL</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;letter-spacing:0.1em;">PRÉVISION</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;letter-spacing:0.1em;">PRÉCÉDENT</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;letter-spacing:0.1em;">IMPACT</th>
+                </tr>
+            </thead>
+            <tbody>{cal_rows}</tbody>
+        </table>
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        st.info("Calendrier économique indisponible — vérifiez la clé Finnhub.")
+
+    st.markdown('<div class="gold-divider"></div>', unsafe_allow_html=True)
+
+    # ── NIVEAUX CLES + SPREAD + VOLUME ──
+    st.markdown('<div class="section-header">◆ Niveaux Clés — Supports / Résistances / Spread / Volume</div>', unsafe_allow_html=True)
+
+    @st.cache_data(ttl=60)
+    def load_market_details():
+        ticker_map = {"EUR/USD":"EURUSD","NASDAQ":"IXIC","XAU/USD":"XAUUSD","BTC/USD":"BINANCE:BTCUSDT","DXY":"DXY"}
+        results = {}
+        try:
+            import yfinance as yf
+            yf_map = {"EUR/USD":"EURUSD=X","NASDAQ":"^IXIC","XAU/USD":"GC=F","BTC/USD":"BTC-USD","DXY":"DX-Y.NYB"}
+            for label, ticker in yf_map.items():
+                try:
+                    data = yf.Ticker(ticker).history(period="30d", interval="1d")
+                    if not data.empty:
+                        high = data["High"].max()
+                        low = data["Low"].min()
+                        close = data["Close"].iloc[-1]
+                        vol = data["Volume"].iloc[-1]
+                        pivot = (data["High"].iloc[-1] + data["Low"].iloc[-1] + close) / 3
+                        r1 = 2 * pivot - data["Low"].iloc[-1]
+                        s1 = 2 * pivot - data["High"].iloc[-1]
+                        r2 = pivot + (data["High"].iloc[-1] - data["Low"].iloc[-1])
+                        s2 = pivot - (data["High"].iloc[-1] - data["Low"].iloc[-1])
+                        results[label] = {
+                            "close": close, "high_30d": high, "low_30d": low,
+                            "volume": vol, "r1": r1, "r2": r2, "s1": s1, "s2": s2,
+                        }
+                except Exception:
+                    results[label] = None
+        except ImportError:
+            pass
+        return results
+
+    market = load_market_details()
+
+    if market:
+        mkt_rows = ""
+        for label, data in market.items():
+            if data:
+                def fmt(v):
+                    if v > 1000:
+                        return f"{v:,.0f}"
+                    return f"{v:.4f}" if v < 10 else f"{v:.2f}"
+
+                vol_str = f"{data['volume']:,.0f}" if data['volume'] else "—"
+                mkt_rows += f"""
+                <tr style="border-bottom:1px solid #1a1200;">
+                    <td style="padding:8px 12px;font-family:Orbitron;font-size:0.75rem;color:#ffd700;font-weight:700;">{label}</td>
+                    <td style="padding:8px 12px;font-family:Orbitron;font-size:0.7rem;color:#e8d5a3;">{fmt(data["close"])}</td>
+                    <td style="padding:8px 12px;font-family:Orbitron;font-size:0.7rem;color:#ef5350;">{fmt(data["r2"])}</td>
+                    <td style="padding:8px 12px;font-family:Orbitron;font-size:0.7rem;color:#ff7043;">{fmt(data["r1"])}</td>
+                    <td style="padding:8px 12px;font-family:Orbitron;font-size:0.7rem;color:#26c6da;">{fmt(data["s1"])}</td>
+                    <td style="padding:8px 12px;font-family:Orbitron;font-size:0.7rem;color:#1565c0;">{fmt(data["s2"])}</td>
+                    <td style="padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#ffd700;">{fmt(data["high_30d"])}</td>
+                    <td style="padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#5a4a1a;">{fmt(data["low_30d"])}</td>
+                    <td style="padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#8b6914;">{vol_str}</td>
+                </tr>"""
+            else:
+                mkt_rows += f"""
+                <tr style="border-bottom:1px solid #1a1200;">
+                    <td style="padding:8px 12px;font-family:Orbitron;font-size:0.75rem;color:#ffd700;">{label}</td>
+                    <td colspan="8" style="padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#3d2e00;">Données indisponibles</td>
+                </tr>"""
+
+        st.markdown(f"""
+        <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;background:#080600;border:1px solid #3d2e00;border-radius:8px;">
+            <thead>
+                <tr style="background:linear-gradient(135deg,#1a1200,#2a1e00);border-bottom:1px solid #c8960c;">
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">ACTIF</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">PRIX</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#ef5350;">R2</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#ff7043;">R1</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#26c6da;">S1</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#1565c0;">S2</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">HIGH 30J</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">LOW 30J</th>
+                    <th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">VOLUME</th>
+                </tr>
+            </thead>
+            <tbody>{mkt_rows}</tbody>
+        </table>
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        st.info("Données marché indisponibles — installez yfinance.")
 
     # ── FOOTER ──
     st.markdown('<div class="gold-divider"></div>', unsafe_allow_html=True)
