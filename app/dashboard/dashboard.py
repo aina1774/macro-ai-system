@@ -294,6 +294,12 @@ def load_market_details():
     return results
 
 
+def fmt(v):
+    if v > 1000:
+        return f"{v:,.0f}"
+    return f"{v:.4f}" if v < 10 else f"{v:.2f}"
+
+
 def render_dashboard():
     # ── AUTH ──
     require_auth()
@@ -674,11 +680,6 @@ def render_dashboard():
     st.markdown('<div class="section-header">◆ Niveaux Clés — Supports / Résistances / Spread / Volume</div>', unsafe_allow_html=True)
 
     market = load_market_details()
-
-    def fmt(v):
-        if v > 1000:
-            return f"{v:,.0f}"
-        return f"{v:.4f}" if v < 10 else f"{v:.2f}"
 
     if market:
         mkt_rows = ""
