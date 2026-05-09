@@ -1,0 +1,556 @@
+2026-05-08 22:28:55,490 [INFO] ============================================================
+2026-05-08 22:28:55,549 [INFO] ============================================================
+2026-05-08 22:49:26,208 [INFO] 📡 [FRED] Collecte des séries économiques...
+2026-05-08 22:49:31,588 [INFO] ✅ FRED: 0 observations sauvegardées
+2026-05-08 22:49:31,595 [INFO] 📰 [NewsAPI] Collecte des articles macro...
+2026-05-08 22:49:36,005 [INFO] ✅ NewsAPI: 0 articles sauvegardés
+2026-05-08 22:51:24,049 [INFO] 📡 [FRED] Collecte des séries économiques...
+2026-05-08 22:51:30,998 [INFO] ✅ FRED: 303 observations sauvegardées
+2026-05-08 22:51:31,001 [INFO] 📰 [NewsAPI] Collecte des articles macro...
+2026-05-08 22:51:35,418 [INFO] ✅ NewsAPI: 0 articles sauvegardés
+2026-05-08 22:54:50,552 [INFO] 📡 [FRED] Collecte des séries économiques...
+2026-05-08 22:54:57,968 [INFO] ✅ FRED: 0 observations sauvegardées
+2026-05-08 22:54:57,971 [INFO] 📰 [NewsAPI] Collecte des articles macro...
+2026-05-08 22:55:03,998 [INFO] ✅ NewsAPI: 120 articles sauvegardés
+2026-05-08 22:56:31,557 [INFO] 🧠 [FinBERT] Analyse du sentiment...
+2026-05-08 22:56:33,198 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-08 22:56:33,262 [WARNING] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-08 22:56:33,326 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-08 22:56:33,426 [INFO] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-08 22:56:33,960 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-08 22:56:34,021 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-08 22:56:34,116 [INFO] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-08 22:56:34,506 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-08 22:56:34,844 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-08 22:56:35,227 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/vocab.txt "HTTP/1.1 307 Temporary Redirect"
+2026-05-08 22:56:35,307 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/vocab.txt "HTTP/1.1 200 OK"
+2026-05-08 22:56:35,383 [INFO] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/vocab.txt "HTTP/1.1 200 OK"
+2026-05-08 22:56:36,066 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer.json "HTTP/1.1 404 Not Found"
+2026-05-08 22:56:36,406 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-05-08 22:56:36,741 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/special_tokens_map.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-08 22:56:36,801 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-05-08 22:56:36,878 [INFO] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-05-08 22:56:37,219 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-05-08 22:56:37,887 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-08 22:56:37,947 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-08 22:56:39,616 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-08 22:56:39,940 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-08 22:56:40,282 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/pytorch_model.bin "HTTP/1.1 302 Found"
+2026-05-08 22:56:41,861 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/xet-read-token/4556d13015211d73dccd3fdd39d39232506f3e43 "HTTP/1.1 200 OK"
+2026-05-08 22:59:44,597 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-08 22:59:51,111 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-08 22:59:51,543 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-08 22:59:51,981 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-08 22:59:52,437 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-08 22:59:53,036 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-08 22:59:53,459 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-08 22:59:54,167 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/xet-read-token/7db323f79b751944bcfa66298ec06977e4518306 "HTTP/1.1 200 OK"
+2026-05-08 23:00:12,994 [INFO] ✅ Sentiment: 50 articles analysés
+2026-05-08 23:03:41,347 [INFO] 📊 [Engine] Calcul des scores macro...
+2026-05-08 23:03:41,525 [INFO] ✅ Scores calculés — Régime: Inflation / Hawkish Cycle
+2026-05-08 23:04:06,764 [INFO] 📊 [Engine] Calcul des scores macro...
+2026-05-08 23:04:06,967 [INFO] ✅ Scores calculés — Régime: Inflation / Hawkish Cycle
+2026-05-08 23:21:12,042 [INFO] 📡 [FRED] Collecte des séries économiques...
+2026-05-08 23:21:23,088 [INFO] ✅ FRED: 2 observations sauvegardées
+2026-05-08 23:21:23,174 [INFO] 📰 [NewsAPI] Collecte des articles macro...
+2026-05-08 23:21:28,390 [INFO] ✅ NewsAPI: 4 articles sauvegardés
+2026-05-08 23:22:03,395 [INFO] 🧠 [FinBERT] Analyse du sentiment...
+2026-05-08 23:22:04,788 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-08 23:22:04,791 [WARNING] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-08 23:22:04,840 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-08 23:22:05,188 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-08 23:22:05,277 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-08 23:22:05,633 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-08 23:22:05,959 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-08 23:22:06,404 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-08 23:22:06,456 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-08 23:22:07,920 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-08 23:22:08,570 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-08 23:22:09,030 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-08 23:22:09,440 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-08 23:22:09,963 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-08 23:22:10,560 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-08 23:22:10,941 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-08 23:22:26,955 [INFO] ✅ Sentiment: 50 articles analysés
+2026-05-08 23:23:02,200 [INFO] 📊 [Engine] Calcul des scores macro...
+2026-05-08 23:23:02,348 [INFO] ✅ Scores calculés — Régime: Inflation / Hawkish Cycle
+2026-05-09 10:44:18,721 [INFO] 📡 [FRED] Collecte des séries économiques...
+2026-05-09 10:44:30,109 [INFO] ✅ FRED: 1 observations sauvegardées
+2026-05-09 10:44:30,157 [INFO] 📰 [NewsAPI] Collecte des articles macro...
+2026-05-09 10:44:37,128 [INFO] ✅ NewsAPI: 45 articles sauvegardés
+2026-05-09 10:45:28,758 [INFO] 🧠 [FinBERT] Analyse du sentiment...
+2026-05-09 10:45:30,400 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 10:45:30,409 [WARNING] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 10:45:30,457 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 10:45:30,964 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 10:45:31,018 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 10:45:31,384 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 10:45:31,706 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 10:45:32,270 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 10:45:32,323 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 10:45:34,070 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 10:45:35,528 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 10:45:36,902 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 10:45:37,306 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 10:45:37,790 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 10:45:38,148 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 10:45:38,547 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 10:45:54,488 [INFO] ✅ Sentiment: 50 articles analysés
+2026-05-09 10:46:37,560 [INFO] 📊 [Engine] Calcul des scores macro...
+2026-05-09 10:46:37,760 [INFO] ✅ Scores calculés — Régime: Inflation / Hawkish Cycle
+2026-05-09 10:52:15,076 [INFO] 📡 [FRED] Collecte des séries économiques...
+2026-05-09 10:52:26,113 [INFO] ✅ FRED: 0 observations sauvegardées
+2026-05-09 10:52:26,128 [INFO] 📰 [NewsAPI] Collecte des articles macro...
+2026-05-09 10:52:35,459 [INFO] ✅ NewsAPI: 0 articles sauvegardés
+2026-05-09 10:53:19,078 [INFO] 🧠 [FinBERT] Analyse du sentiment...
+2026-05-09 10:53:20,524 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 10:53:20,629 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 10:53:21,015 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 10:53:21,075 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 10:53:21,456 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 10:53:21,814 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 10:53:22,254 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 10:53:22,256 [WARNING] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 10:53:22,314 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 10:53:23,922 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 10:53:24,269 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 10:53:25,025 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 10:53:25,486 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 10:53:26,035 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 10:53:26,513 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 10:53:27,024 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 10:53:37,493 [INFO] ✅ Sentiment: 19 articles analysés
+2026-05-09 10:54:17,654 [INFO] 📊 [Engine] Calcul des scores macro...
+2026-05-09 10:54:17,837 [INFO] ✅ Scores calculés — Régime: Inflation / Hawkish Cycle
+2026-05-09 11:12:55,847 [INFO] scheduler � =================================================================
+2026-05-09 11:12:56,143 [INFO] scheduler �    D�marr� le 2026-05-09 � 11:12:56
+2026-05-09 11:12:56,143 [INFO] scheduler �    Ctrl+C pour arr�ter proprement
+2026-05-09 11:12:56,144 [INFO] scheduler � =================================================================
+2026-05-09 11:13:53,330 [INFO] httpx � HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:13:53,420 [INFO] httpx � HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:13:53,823 [INFO] httpx � HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:13:53,875 [INFO] httpx � HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 11:13:54,271 [INFO] httpx � HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 11:13:54,586 [INFO] httpx � HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 11:13:55,296 [INFO] httpx � HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:13:55,298 [WARNING] huggingface_hub.utils._http � Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 11:13:55,365 [INFO] httpx � HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:13:57,184 [INFO] httpx � HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 11:13:57,923 [INFO] httpx � HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 11:13:58,273 [INFO] httpx � HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 11:13:58,663 [INFO] httpx � HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 11:13:59,119 [INFO] httpx � HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 11:13:59,530 [INFO] httpx � HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 11:14:00,013 [INFO] httpx � HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 11:14:13,480 [INFO] httpx � HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-05-09 11:20:35,258 [INFO] scheduler - ============================================================
+2026-05-09 11:20:35,259 [INFO] scheduler - AI MACRO INTELLIGENCE - REAL-TIME SCHEDULER
+2026-05-09 11:20:35,259 [INFO] scheduler - Demarre le 2026-05-09 a 11:20:35
+2026-05-09 11:20:35,260 [INFO] scheduler - Ctrl+C pour arreter
+2026-05-09 11:20:35,260 [INFO] scheduler - ============================================================
+2026-05-09 11:20:35,260 [INFO] scheduler - Schedule configure:
+2026-05-09 11:20:35,261 [INFO] scheduler -   News + Sentiment + Scores  -> toutes les 15 min
+2026-05-09 11:20:35,261 [INFO] scheduler -   Marches                    -> toutes les 5 min
+2026-05-09 11:20:35,261 [INFO] scheduler -   FRED                       -> toutes les 6h
+2026-05-09 11:20:35,261 [INFO] scheduler - Premier cycle de demarrage...
+2026-05-09 11:20:35,261 [INFO] scheduler - [START] fred
+2026-05-09 11:20:46,241 [INFO] scheduler - FRED: 0 nouvelles observations
+2026-05-09 11:20:46,248 [INFO] scheduler - [OK] fred termine en 10s
+2026-05-09 11:20:48,249 [INFO] scheduler - [START] news+sentiment+scores
+2026-05-09 11:20:54,070 [INFO] scheduler - News: 0 nouveaux articles
+2026-05-09 11:21:24,161 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:21:24,210 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:21:24,586 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:21:24,634 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 11:21:24,958 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 11:21:25,270 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 11:21:25,696 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:21:25,743 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:21:28,243 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 11:21:28,843 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 11:21:29,320 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 11:21:29,707 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 11:21:30,070 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 11:21:30,580 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 11:21:30,607 [WARNING] huggingface_hub.utils._http - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 11:21:31,088 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 11:21:32,673 [INFO] scheduler - Sentiment: 0 articles analyses
+2026-05-09 11:21:32,831 [INFO] scheduler - Scores - USD:28 INF:72 REC:27 FEAR:17 | Inflation / Hawkish Cycle
+2026-05-09 11:21:32,832 [INFO] scheduler - [OK] news+sentiment+scores termine en 44s
+2026-05-09 11:21:34,832 [INFO] scheduler - [START] markets
+2026-05-09 11:21:34,861 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 11:21:36,885 [INFO] scheduler - Cycle initial termine - scheduler actif
+2026-05-09 11:25:45,289 [INFO] scheduler - ============================================================
+2026-05-09 11:25:45,289 [INFO] scheduler - AI MACRO INTELLIGENCE - REAL-TIME SCHEDULER
+2026-05-09 11:25:45,290 [INFO] scheduler - Demarre le 2026-05-09 a 11:25:45
+2026-05-09 11:25:45,290 [INFO] scheduler - Ctrl+C pour arreter
+2026-05-09 11:25:45,290 [INFO] scheduler - ============================================================
+2026-05-09 11:25:45,291 [INFO] scheduler - Schedule configure:
+2026-05-09 11:25:45,291 [INFO] scheduler -   News + Sentiment + Scores  -> toutes les 15 min
+2026-05-09 11:25:45,291 [INFO] scheduler -   Marches                    -> toutes les 5 min
+2026-05-09 11:25:45,292 [INFO] scheduler -   FRED                       -> toutes les 6h
+2026-05-09 11:25:45,292 [INFO] scheduler - Premier cycle de demarrage...
+2026-05-09 11:25:45,293 [INFO] scheduler - [START] fred
+2026-05-09 11:25:57,924 [INFO] scheduler - FRED: 0 nouvelles observations
+2026-05-09 11:25:57,928 [INFO] scheduler - [OK] fred termine en 12s
+2026-05-09 11:25:59,929 [INFO] scheduler - [START] news+sentiment+scores
+2026-05-09 11:26:06,289 [INFO] scheduler - News: 2 nouveaux articles
+2026-05-09 11:26:41,716 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:26:41,769 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:26:42,134 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:26:42,200 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 11:26:42,520 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 11:26:42,834 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 11:26:43,283 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:26:43,284 [WARNING] huggingface_hub.utils._http - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 11:26:43,334 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:26:45,009 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 11:26:45,611 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 11:26:46,106 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 11:26:46,604 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 11:26:47,534 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 11:26:48,074 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 11:26:48,557 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 11:26:52,101 [INFO] scheduler - Sentiment: 2 articles analyses
+2026-05-09 11:26:52,323 [INFO] scheduler - Scores - USD:28 INF:72 REC:27 FEAR:16 | Inflation / Hawkish Cycle
+2026-05-09 11:26:52,324 [INFO] scheduler - [OK] news+sentiment+scores termine en 52s
+2026-05-09 11:26:54,326 [INFO] scheduler - [START] markets
+2026-05-09 11:26:54,455 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 11:26:56,456 [INFO] scheduler - Cycle initial termine - scheduler actif
+2026-05-09 11:30:56,560 [INFO] scheduler - [START] markets
+2026-05-09 11:30:56,653 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 11:32:10,103 [INFO] 📡 [FRED] Collecte des séries économiques...
+2026-05-09 11:32:20,597 [INFO] ✅ FRED: 0 observations sauvegardées
+2026-05-09 11:32:20,606 [INFO] 📰 [NewsAPI] Collecte des articles macro...
+2026-05-09 11:32:28,157 [INFO] ✅ NewsAPI: 0 articles sauvegardés
+2026-05-09 11:33:11,119 [INFO] 🧠 [FinBERT] Analyse du sentiment...
+2026-05-09 11:33:12,647 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:33:12,705 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:33:13,070 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:33:13,072 [WARNING] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 11:33:13,125 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 11:33:13,454 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 11:33:13,777 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 11:33:14,351 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:33:14,405 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:33:16,171 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 11:33:17,068 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 11:33:17,466 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 11:33:17,862 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 11:33:18,222 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 11:33:18,561 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 11:33:18,941 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 11:33:25,922 [INFO] ✅ Sentiment: 0 articles analysés
+2026-05-09 11:34:24,475 [INFO] 📊 [Engine] Calcul des scores macro...
+2026-05-09 11:34:24,727 [INFO] ✅ Scores calculés — Régime: Inflation / Hawkish Cycle
+2026-05-09 11:35:56,695 [INFO] scheduler - [START] markets
+2026-05-09 11:35:56,712 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 11:40:56,734 [INFO] scheduler - [START] news+sentiment+scores
+2026-05-09 11:41:04,713 [INFO] scheduler - News: 0 nouveaux articles
+2026-05-09 11:41:05,486 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:41:05,541 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:41:05,964 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:41:06,063 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 11:41:06,408 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 11:41:06,731 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 11:41:07,238 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:41:07,294 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:41:07,844 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 11:41:08,398 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 11:41:08,874 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 11:41:09,290 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 11:41:09,695 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 11:41:13,601 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 11:41:14,351 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 11:41:21,228 [INFO] scheduler - Sentiment: 0 articles analyses
+2026-05-09 11:41:21,685 [INFO] scheduler - Scores - USD:28 INF:72 REC:27 FEAR:16 | Inflation / Hawkish Cycle
+2026-05-09 11:41:21,686 [INFO] scheduler - [OK] news+sentiment+scores termine en 24s
+2026-05-09 11:41:21,688 [INFO] scheduler - [START] markets
+2026-05-09 11:41:21,695 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 11:46:21,711 [INFO] scheduler - [START] markets
+2026-05-09 11:46:21,713 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 11:51:21,718 [INFO] scheduler - [START] markets
+2026-05-09 11:51:21,720 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 11:56:21,733 [INFO] scheduler - [START] news+sentiment+scores
+2026-05-09 11:56:29,743 [INFO] scheduler - News: 1 nouveaux articles
+2026-05-09 11:56:30,399 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:56:30,474 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:56:30,877 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:56:30,961 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 11:56:31,324 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 11:56:31,661 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 11:56:32,167 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 11:56:32,225 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 11:56:32,597 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 11:56:33,243 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 11:56:33,648 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 11:56:34,157 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 11:56:34,709 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 11:56:35,381 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 11:56:36,373 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 11:56:43,992 [INFO] scheduler - Sentiment: 1 articles analyses
+2026-05-09 11:56:44,388 [INFO] scheduler - Scores - USD:28 INF:72 REC:27 FEAR:16 | Inflation / Hawkish Cycle
+2026-05-09 11:56:44,389 [INFO] scheduler - [OK] news+sentiment+scores termine en 22s
+2026-05-09 11:56:44,392 [INFO] scheduler - [START] markets
+2026-05-09 11:56:44,399 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 12:01:44,426 [INFO] scheduler - [START] markets
+2026-05-09 12:01:44,442 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 12:06:44,446 [INFO] scheduler - [START] markets
+2026-05-09 12:06:44,448 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 12:11:44,461 [INFO] scheduler - [START] news+sentiment+scores
+2026-05-09 12:11:51,724 [INFO] scheduler - News: 2 nouveaux articles
+2026-05-09 12:11:52,244 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 12:11:52,305 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 12:11:52,707 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 12:11:52,786 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 12:11:53,149 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 12:11:53,509 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 12:11:54,022 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 12:11:54,076 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 12:11:54,548 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 12:11:55,104 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 12:11:55,590 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 12:11:56,054 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 12:11:56,830 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 12:11:57,326 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 12:11:58,157 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 12:12:03,254 [INFO] scheduler - Sentiment: 2 articles analyses
+2026-05-09 12:12:03,496 [INFO] scheduler - Scores - USD:28 INF:72 REC:27 FEAR:16 | Inflation / Hawkish Cycle
+2026-05-09 12:12:03,498 [INFO] scheduler - [OK] news+sentiment+scores termine en 19s
+2026-05-09 12:12:03,498 [INFO] scheduler - [START] markets
+2026-05-09 12:12:03,504 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 21:03:10,268 [INFO] 📡 [FRED] Collecte des séries économiques...
+2026-05-09 21:03:19,821 [INFO] ✅ FRED: 0 observations sauvegardées
+2026-05-09 21:03:20,016 [INFO] 📰 [NewsAPI] Collecte des articles macro...
+2026-05-09 21:03:27,977 [INFO] ✅ NewsAPI: 51 articles sauvegardés
+2026-05-09 21:04:01,434 [INFO] 🧠 [FinBERT] Analyse du sentiment...
+2026-05-09 21:04:02,884 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 21:04:02,886 [WARNING] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 21:04:02,934 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 21:04:03,348 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 21:04:03,397 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 21:04:03,736 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 21:04:04,046 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 21:04:04,546 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 21:04:04,598 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 21:04:06,073 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 21:04:06,802 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 21:04:07,228 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 21:04:07,717 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 21:04:08,209 [INFO] HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 21:04:08,642 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 21:04:09,349 [INFO] HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 21:04:23,411 [INFO] ✅ Sentiment: 50 articles analysés
+2026-05-09 21:04:58,339 [INFO] 📊 [Engine] Calcul des scores macro...
+2026-05-09 21:04:58,496 [INFO] ✅ Scores calculés — Régime: Inflation / Hawkish Cycle
+2026-05-09 21:17:26,371 [INFO] scheduler - ============================================================
+2026-05-09 21:17:26,372 [INFO] scheduler - AI MACRO INTELLIGENCE - REAL-TIME SCHEDULER
+2026-05-09 21:17:26,373 [INFO] scheduler - Demarre le 2026-05-09 a 21:17:26
+2026-05-09 21:17:26,373 [INFO] scheduler - Ctrl+C pour arreter
+2026-05-09 21:17:26,373 [INFO] scheduler - ============================================================
+2026-05-09 21:17:26,373 [INFO] scheduler - Schedule configure:
+2026-05-09 21:17:26,374 [INFO] scheduler -   News + Sentiment + Scores  -> toutes les 15 min
+2026-05-09 21:17:26,374 [INFO] scheduler -   Marches                    -> toutes les 5 min
+2026-05-09 21:17:26,375 [INFO] scheduler -   FRED                       -> toutes les 6h
+2026-05-09 21:17:26,375 [INFO] scheduler - Premier cycle de demarrage...
+2026-05-09 21:17:26,375 [INFO] scheduler - [START] fred
+2026-05-09 21:17:40,722 [INFO] scheduler - FRED: 0 nouvelles observations
+2026-05-09 21:17:40,725 [INFO] scheduler - [OK] fred termine en 14s
+2026-05-09 21:17:42,726 [INFO] scheduler - [START] news+sentiment+scores
+2026-05-09 21:17:49,119 [INFO] scheduler - News: 0 nouveaux articles
+2026-05-09 21:18:29,600 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 21:18:29,604 [WARNING] huggingface_hub.utils._http - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 21:18:29,663 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 21:18:30,518 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 21:18:30,574 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 21:18:31,318 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 21:18:31,639 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 21:18:32,140 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 21:18:32,435 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 21:18:34,048 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 21:18:35,229 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 21:18:35,709 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 21:18:36,087 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 21:18:36,503 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 21:18:36,982 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 21:18:37,412 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 21:18:40,723 [INFO] scheduler - Sentiment: 1 articles analyses
+2026-05-09 21:18:40,957 [INFO] scheduler - Scores - USD:27 INF:72 REC:26 FEAR:19 | Inflation / Hawkish Cycle
+2026-05-09 21:18:40,958 [INFO] scheduler - [OK] news+sentiment+scores termine en 58s
+2026-05-09 21:18:42,959 [INFO] scheduler - [START] markets
+2026-05-09 21:18:42,971 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 21:18:44,972 [INFO] scheduler - Cycle initial termine - scheduler actif
+2026-05-09 21:32:01,228 [INFO] scheduler - ============================================================
+2026-05-09 21:32:01,229 [INFO] scheduler - AI MACRO INTELLIGENCE - REAL-TIME SCHEDULER
+2026-05-09 21:32:01,229 [INFO] scheduler - Demarre le 2026-05-09 a 21:32:01
+2026-05-09 21:32:01,229 [INFO] scheduler - Ctrl+C pour arreter
+2026-05-09 21:32:01,229 [INFO] scheduler - ============================================================
+2026-05-09 21:32:01,230 [INFO] scheduler - Schedule configure:
+2026-05-09 21:32:01,230 [INFO] scheduler -   News + Sentiment + Scores  -> toutes les 15 min
+2026-05-09 21:32:01,230 [INFO] scheduler -   Marches                    -> toutes les 5 min
+2026-05-09 21:32:01,231 [INFO] scheduler -   FRED                       -> toutes les 6h
+2026-05-09 21:32:01,231 [INFO] scheduler - Premier cycle de demarrage...
+2026-05-09 21:32:01,231 [INFO] scheduler - [START] fred
+2026-05-09 21:32:13,542 [INFO] scheduler - FRED: 0 nouvelles observations
+2026-05-09 21:32:13,546 [INFO] scheduler - [OK] fred termine en 12s
+2026-05-09 21:32:15,546 [INFO] scheduler - [START] news+sentiment+scores
+2026-05-09 21:32:23,018 [INFO] scheduler - News: 2 nouveaux articles
+2026-05-09 21:33:01,729 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 21:33:01,787 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 21:33:02,144 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 21:33:02,206 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 21:33:02,541 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 21:33:02,857 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 21:33:03,306 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 21:33:03,309 [WARNING] huggingface_hub.utils._http - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 21:33:03,368 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 21:33:05,012 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 21:33:05,540 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 21:33:05,901 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 21:33:06,370 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 21:33:06,822 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 21:33:07,225 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 21:33:07,638 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 21:33:13,173 [INFO] scheduler - Sentiment: 2 articles analyses
+2026-05-09 21:33:13,489 [INFO] scheduler - Scores - USD:27 INF:72 REC:26 FEAR:19 | Inflation / Hawkish Cycle
+2026-05-09 21:33:13,492 [INFO] scheduler - [OK] news+sentiment+scores termine en 57s
+2026-05-09 21:33:15,496 [INFO] scheduler - [START] markets
+2026-05-09 21:33:15,510 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 21:33:17,511 [INFO] scheduler - Cycle initial termine - scheduler actif
+2026-05-09 21:55:36,109 [INFO] scheduler - ============================================================
+2026-05-09 21:55:36,110 [INFO] scheduler - AI MACRO INTELLIGENCE - REAL-TIME SCHEDULER
+2026-05-09 21:55:36,111 [INFO] scheduler - Demarre le 2026-05-09 a 21:55:36
+2026-05-09 21:55:36,112 [INFO] scheduler - Ctrl+C pour arreter
+2026-05-09 21:55:36,112 [INFO] scheduler - ============================================================
+2026-05-09 21:55:36,113 [INFO] scheduler - Schedule configure:
+2026-05-09 21:55:36,113 [INFO] scheduler -   News + Sentiment + Scores  -> toutes les 15 min
+2026-05-09 21:55:36,113 [INFO] scheduler -   Marches                    -> toutes les 5 min
+2026-05-09 21:55:36,114 [INFO] scheduler -   FRED                       -> toutes les 6h
+2026-05-09 21:55:36,114 [INFO] scheduler - Premier cycle de demarrage...
+2026-05-09 21:55:36,115 [INFO] scheduler - [START] fred
+2026-05-09 21:58:45,798 [INFO] scheduler - ============================================================
+2026-05-09 21:58:45,798 [INFO] scheduler - AI MACRO INTELLIGENCE - REAL-TIME SCHEDULER
+2026-05-09 21:58:45,798 [INFO] scheduler - Demarre le 2026-05-09 a 21:58:45
+2026-05-09 21:58:45,799 [INFO] scheduler - Ctrl+C pour arreter
+2026-05-09 21:58:45,799 [INFO] scheduler - ============================================================
+2026-05-09 21:58:45,799 [INFO] scheduler - Schedule configure:
+2026-05-09 21:58:45,799 [INFO] scheduler -   News + Sentiment + Scores  -> toutes les 15 min
+2026-05-09 21:58:45,800 [INFO] scheduler -   Marches                    -> toutes les 5 min
+2026-05-09 21:58:45,800 [INFO] scheduler -   FRED                       -> toutes les 6h
+2026-05-09 21:58:45,800 [INFO] scheduler - Premier cycle de demarrage...
+2026-05-09 21:58:45,801 [INFO] scheduler - [START] fred
+2026-05-09 22:00:04,815 [INFO] scheduler - FRED: 0 nouvelles observations
+2026-05-09 22:00:04,817 [INFO] scheduler - [OK] fred termine en 79s
+2026-05-09 22:00:06,819 [INFO] scheduler - [START] news+sentiment+scores
+2026-05-09 22:00:22,132 [INFO] scheduler - News: 0 nouveaux articles
+2026-05-09 22:00:57,451 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:00:57,456 [WARNING] huggingface_hub.utils._http - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 22:00:57,511 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 22:00:57,885 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:00:57,940 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 22:00:58,292 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 22:00:58,661 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 22:00:59,266 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:00:59,338 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 22:01:00,850 [INFO] ============================================================
+2026-05-09 22:01:01,214 [INFO] ============================================================
+2026-05-09 22:01:01,615 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 22:01:02,815 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 22:01:03,332 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 22:01:03,724 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 22:01:04,246 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 22:01:04,604 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 22:01:04,977 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 22:01:18,362 [INFO] scheduler - Sentiment: 0 articles analyses
+2026-05-09 22:01:25,739 [INFO] scheduler - [OK] news+sentiment+scores termine en 78s
+2026-05-09 22:01:27,782 [INFO] scheduler - [START] markets
+2026-05-09 22:01:27,826 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 22:01:29,827 [INFO] scheduler - Cycle initial termine - scheduler actif
+2026-05-09 22:03:59,847 [INFO] scheduler - [START] markets
+2026-05-09 22:03:59,850 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 22:04:23,446 [INFO] scheduler - ============================================================
+2026-05-09 22:04:23,447 [INFO] scheduler - AI MACRO INTELLIGENCE - REAL-TIME SCHEDULER
+2026-05-09 22:04:23,448 [INFO] scheduler - Demarre le 2026-05-09 a 22:04:23
+2026-05-09 22:04:23,448 [INFO] scheduler - Ctrl+C pour arreter
+2026-05-09 22:04:23,449 [INFO] scheduler - ============================================================
+2026-05-09 22:04:23,449 [INFO] scheduler - Schedule configure:
+2026-05-09 22:04:23,449 [INFO] scheduler -   News + Sentiment + Scores  -> toutes les 15 min
+2026-05-09 22:04:23,450 [INFO] scheduler -   Marches                    -> toutes les 5 min
+2026-05-09 22:04:23,450 [INFO] scheduler -   FRED                       -> toutes les 6h
+2026-05-09 22:04:23,450 [INFO] scheduler - Premier cycle de demarrage...
+2026-05-09 22:04:23,450 [INFO] scheduler - [START] fred
+2026-05-09 22:07:18,653 [INFO] scheduler - FRED: 123 nouvelles observations
+2026-05-09 22:07:18,682 [INFO] scheduler - [OK] fred termine en 175s
+2026-05-09 22:07:20,683 [INFO] scheduler - [START] news+sentiment+scores
+2026-05-09 22:07:27,742 [INFO] scheduler - News: 0 nouveaux articles
+2026-05-09 22:08:07,948 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:08:08,196 [WARNING] huggingface_hub.utils._http - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 22:08:08,260 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 22:08:08,625 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:08:08,688 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 22:08:09,027 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 22:08:09,361 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 22:08:10,015 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:08:10,078 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 22:08:11,862 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 22:08:13,275 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 22:08:13,796 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 22:08:14,287 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 22:08:15,150 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 22:08:15,624 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 22:08:16,081 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 22:08:27,662 [INFO] scheduler - Sentiment: 0 articles analyses
+2026-05-09 22:08:36,493 [INFO] scheduler - [OK] news+sentiment+scores termine en 75s
+2026-05-09 22:08:38,494 [INFO] scheduler - [START] markets
+2026-05-09 22:08:38,512 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 22:08:40,513 [INFO] scheduler - Cycle initial termine - scheduler actif
+2026-05-09 22:08:59,865 [INFO] scheduler - [START] markets
+2026-05-09 22:08:59,872 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 22:09:40,587 [INFO] scheduler - [START] markets
+2026-05-09 22:09:40,589 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 22:13:59,902 [INFO] scheduler - [START] news+sentiment+scores
+2026-05-09 22:14:07,893 [INFO] scheduler - News: 0 nouveaux articles
+2026-05-09 22:14:08,785 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:14:08,926 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 22:14:09,548 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:14:09,619 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 22:14:09,993 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 22:14:10,424 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 22:14:11,495 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:14:11,623 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 22:14:12,659 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 22:14:13,919 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 22:14:14,476 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 22:14:15,065 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 22:14:15,498 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 22:14:15,874 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 22:14:16,210 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 22:14:28,972 [INFO] scheduler - Sentiment: 0 articles analyses
+2026-05-09 22:14:38,300 [INFO] scheduler - [OK] news+sentiment+scores termine en 38s
+2026-05-09 22:14:38,301 [INFO] scheduler - [START] markets
+2026-05-09 22:14:38,316 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 22:14:40,783 [INFO] scheduler - [START] markets
+2026-05-09 22:14:40,828 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 22:19:38,334 [INFO] scheduler - [START] markets
+2026-05-09 22:19:38,336 [INFO] scheduler - [OK] markets termine en 0s
+2026-05-09 22:19:40,885 [INFO] scheduler - [START] news+sentiment+scores
+2026-05-09 22:19:47,906 [INFO] scheduler - News: 0 nouveaux articles
+2026-05-09 22:19:48,742 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:19:48,831 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 22:19:50,080 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:19:50,141 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 22:19:50,515 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 22:19:50,868 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 22:19:51,426 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 22:19:51,488 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/ProsusAI/finbert/4556d13015211d73dccd3fdd39d39232506f3e43/config.json "HTTP/1.1 200 OK"
+2026-05-09 22:19:52,038 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-05-09 22:19:52,693 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert "HTTP/1.1 200 OK"
+2026-05-09 22:19:53,271 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/main "HTTP/1.1 200 OK"
+2026-05-09 22:19:53,826 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 22:19:54,305 [INFO] httpx - HTTP Request: GET https://huggingface.co/api/models/ProsusAI/finbert/commits/refs%2Fpr%2F29 "HTTP/1.1 200 OK"
+2026-05-09 22:19:54,722 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 22:19:55,157 [INFO] httpx - HTTP Request: HEAD https://huggingface.co/ProsusAI/finbert/resolve/refs%2Fpr%2F29/model.safetensors "HTTP/1.1 302 Found"
+2026-05-09 22:20:10,498 [INFO] scheduler - Sentiment: 0 articles analyses
+2026-05-09 22:20:18,134 [INFO] scheduler - [OK] news+sentiment+scores termine en 37s
+2026-05-09 22:20:18,135 [INFO] scheduler - [START] markets
+2026-05-09 22:20:18,137 [INFO] scheduler - [OK] markets termine en 0s
