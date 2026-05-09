@@ -675,15 +675,15 @@ def render_dashboard():
 
     market = load_market_details()
 
+    def fmt(v):
+        if v > 1000:
+            return f"{v:,.0f}"
+        return f"{v:.4f}" if v < 10 else f"{v:.2f}"
+
     if market:
         mkt_rows = ""
         for label, data in market.items():
             if data:
-                def fmt(v):
-                    if v > 1000:
-                        return f"{v:,.0f}"
-                    return f"{v:.4f}" if v < 10 else f"{v:.2f}"
-
                 vol_str = f"{data['volume']:,.0f}" if data['volume'] else "—"
                 mkt_rows += f"""
                 <tr style="border-bottom:1px solid #1a1200;">
