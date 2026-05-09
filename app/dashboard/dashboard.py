@@ -121,7 +121,7 @@ def load_market_details():
     return results
 
 
-@st.cache_data(ttl=3600)
+@st.cache_data(ttl=300)
 def load_calendar():
     try:
         today = datetime.utcnow().strftime("%Y-%m-%d")
@@ -395,8 +395,25 @@ def render_dashboard():
             sig = trading_signals[signal_key]
             return f'<span style="color:#5a4a1a;">▲ {sig["up"]}<br>▼ {sig["down"]}</span>'
 
-    if calendar:
+    # Trier par importance
+    priority_keywords = [
+        "inflation rate yoy", "cpi", "core inflation", "nonfarm payrolls", "gdp growth rate", "gdp mom",
+        "fomc", "fed", "interest rate", "ppi", "retail sales", "unemployment", "core pce",
+        "zew", "ifo", "pmi", "durable goods", "building permits", "housing"
+    ]
+
+    def event_priority(event):
+        name = event.get("event", event.get("name","")).lower()
+        for i, kw in enumerate(priority_keywords):
+            if kw in name:
+                return i
+        return len(priority_keywords)
+
+    calendar_sorted = sorted(calendar, key=lambda e: (event_priority(e), e.get("time", e.get("date",""))))
+
+    if calendar_sorted:
         cal_rows = ""
+        calendar = calendar_sorted
         for event in calendar[:25]:
             date_str = event.get("time", event.get("date","?"))[:10]
             try:
