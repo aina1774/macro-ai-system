@@ -24,25 +24,25 @@ jobs:
 
       - name: Collecte des données
         env:
-          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
-          FINNHUB_KEY: ${{ secrets.FINNHUB_KEY }}
-          ALPHAVANTAGE_KEY: ${{ secrets.ALPHAVANTAGE_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          FRED_API_KEY: ${{ secrets.FREDKEY }}
+          NEWSAPI_KEY: ${{ secrets.NEWSAPIKEY }}
+          FINNHUB_KEY: ${{ secrets.FINNHUBKEY }}
+          ALPHAVANTAGE_KEY: ${{ secrets.ALPHAVANTAGEKEY }}
+          DATABASE_URL: ${{ secrets.DATABASEURL }}
           PYTHONUTF8: "1"
         run: python main.py --collect
 
       - name: Analyse du sentiment
         env:
-          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          FRED_API_KEY: ${{ secrets.FREDKEY }}
+          NEWSAPI_KEY: ${{ secrets.NEWSAPIKEY }}
+          DATABASE_URL: ${{ secrets.DATABASEURL }}
           PYTHONUTF8: "1"
         run: python main.py --analyze
 
       - name: Calcul des scores
         env:
-          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          FRED_API_KEY: ${{ secrets.FREDKEY }}
+          DATABASE_URL: ${{ secrets.DATABASEURL }}
           PYTHONUTF8: "1"
         run: python main.py --scores
