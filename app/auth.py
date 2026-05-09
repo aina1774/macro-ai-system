@@ -2,44 +2,60 @@
 ============================================================
 RaAina Macro Eco — Système d'Authentification
 ============================================================
+Clés stockées dans Streamlit Secrets
 """
 
-import csv
-import os
 import streamlit as st
-from datetime import datetime
+from datetime import datetime, timedelta
 
-KEYS_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "keys.csv")
 
 def verify_key(nom: str, cle: str) -> dict:
     """
-    Vérifie si un nom + clé est valide.
-    Retourne : {"valid": bool, "message": str, "nom": str}
+    Vérifie si un nom + clé est valide via Streamlit Secrets.
+    Format secrets.toml :
+    [keys]
+    NomUtilisateur = "RAAINA-XXXX-XXXX-XXXX"
+
+    [expiration]
+    NomUtilisateur = "2026-06-08"
     """
     if not nom or not cle:
         return {"valid": False, "message": "Nom et clé requis."}
 
-    if not os.path.exists(KEYS_FILE):
-        return {"valid": False, "message": "Base de clés introuvable."}
+    try:
+        keys = st.secrets.get("keys", {})
+    except Exception:
+        return {"valid": False, "message": "Configuration des clés introuvable."}
 
-    now = datetime.now().date()
+    # Chercher le nom (insensible à la casse)
+    matched_nom = None
+    for k in keys:
+        if k.lower() == nom.strip().lower():
+            matched_nom = k
+            break
 
-    with open(KEYS_FILE, "r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            if row["cle"].strip() == cle.strip():
-                if row["nom"].strip().lower() != nom.strip().lower():
-                    return {"valid": False, "message": "Nom incorrect pour cette clé."}
-                if row["actif"].strip().lower() != "true":
-                    return {"valid": False, "message": "Cette clé a été révoquée."}
-                exp = datetime.strptime(row["expiration"].strip(), "%Y-%m-%d").date()
-                if exp < now:
-                    days_ago = (now - exp).days
-                    return {"valid": False, "message": f"Clé expirée depuis {days_ago} jour(s). Contactez RaAina."}
-                days_left = (exp - now).days
-                return {"valid": True, "message": f"Accès autorisé — expire dans {days_left} jour(s).", "nom": row["nom"]}
+    if matched_nom is None:
+        return {"valid": False, "message": "Utilisateur inconnu. Contactez RaAina."}
 
-    return {"valid": False, "message": "Clé invalide. Contactez RaAina pour obtenir un accès."}
+    stored_key = keys[matched_nom]
+    if stored_key.strip() != cle.strip():
+        return {"valid": False, "message": "Clé incorrecte. Contactez RaAina."}
+
+    # Vérifier expiration si définie
+    try:
+        expirations = st.secrets.get("expiration", {})
+        if matched_nom in expirations:
+            exp_date = datetime.strptime(expirations[matched_nom], "%Y-%m-%d").date()
+            now = datetime.now().date()
+            if exp_date < now:
+                days_ago = (now - exp_date).days
+                return {"valid": False, "message": f"Clé expirée depuis {days_ago} jour(s). Contactez RaAina."}
+            days_left = (exp_date - now).days
+            return {"valid": True, "message": f"Accès autorisé — expire dans {days_left} jour(s).", "nom": matched_nom}
+    except Exception:
+        pass
+
+    return {"valid": True, "message": "Accès autorisé.", "nom": matched_nom}
 
 
 def show_login_page():
@@ -74,13 +90,6 @@ def show_login_page():
             letter-spacing: 0.3em;
             margin-bottom: 2rem;
         }
-        .login-box {
-            background: linear-gradient(135deg, #0a0800, #1a1400);
-            border: 1px solid #c8960c;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 0 30px rgba(200,150,12,0.2);
-        }
         .gold-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, #ffd700, #c8960c, #ffd700, transparent);
@@ -112,7 +121,6 @@ def show_login_page():
             letter-spacing: 0.15em !important;
             border: none !important;
             border-radius: 6px !important;
-            padding: 0.6rem 2rem !important;
             width: 100% !important;
             margin-top: 1rem !important;
         }
@@ -122,14 +130,11 @@ def show_login_page():
     </style>
     """, unsafe_allow_html=True)
 
-    # Centrer le formulaire
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         st.markdown('<div class="login-title">⚡ RaAina Macro Eco ⚡</div>', unsafe_allow_html=True)
         st.markdown('<div class="login-sub">◆ Accès Restreint ◆ Directed by RaAina ◆</div>', unsafe_allow_html=True)
         st.markdown('<div class="gold-divider"></div>', unsafe_allow_html=True)
-
-        st.markdown('<div class="login-box">', unsafe_allow_html=True)
 
         st.markdown('<p style="font-family:Orbitron;font-size:0.65rem;color:#5a4a1a;text-align:center;letter-spacing:0.1em;margin-bottom:1.5rem;">ENTREZ VOS IDENTIFIANTS POUR ACCÉDER AU DASHBOARD</p>', unsafe_allow_html=True)
 
@@ -149,15 +154,11 @@ def show_login_page():
             else:
                 st.markdown('<div style="background:#1a0e00;border-left:3px solid #ffa726;padding:0.8rem;border-radius:4px;margin-top:1rem;font-family:Orbitron;font-size:0.7rem;color:#ffa726;">⚠️ Remplissez tous les champs.</div>', unsafe_allow_html=True)
 
-        st.markdown('</div>', unsafe_allow_html=True)
         st.markdown('<p style="font-family:Orbitron;font-size:0.55rem;color:#3d2e00;text-align:center;margin-top:1.5rem;letter-spacing:0.15em;">Pas de clé ? Contactez RaAina pour obtenir un accès.</p>', unsafe_allow_html=True)
 
 
 def require_auth():
-    """
-    Appeler en haut du dashboard.
-    Retourne True si authentifié, sinon affiche la page de login.
-    """
+    """Appeler en haut du dashboard."""
     if "authenticated" not in st.session_state:
         st.session_state["authenticated"] = False
 
