@@ -1,71 +1,41 @@
 """
-============================================================
-RaAina Macro Eco — Système d'Authentification
-============================================================
-Clés stockées dans Streamlit Secrets
+RaAina Macro Eco — Authentification
 """
-
 import streamlit as st
-from datetime import datetime, timedelta
 
 
 def verify_key(nom: str, cle: str) -> dict:
-    """
-    Vérifie si un nom + clé est valide via Streamlit Secrets.
-    Format secrets.toml :
-    [keys]
-    NomUtilisateur = "RAAINA-XXXX-XXXX-XXXX"
-
-    [expiration]
-    NomUtilisateur = "2026-06-08"
-    """
     if not nom or not cle:
         return {"valid": False, "message": "Nom et clé requis."}
 
     try:
-        keys = st.secrets.get("keys", {})
-    except Exception:
-        return {"valid": False, "message": "Configuration des clés introuvable."}
+        # Lire toutes les clés depuis secrets
+        all_secrets = dict(st.secrets["keys"])
+    except Exception as e:
+        return {"valid": False, "message": f"Erreur secrets: {e}"}
 
-    # Chercher le nom (insensible à la casse)
-    matched_nom = None
-    for k in keys:
-        if k.lower() == nom.strip().lower():
-            matched_nom = k
+    # Chercher le nom
+    matched = None
+    for k, v in all_secrets.items():
+        if k.strip().lower() == nom.strip().lower():
+            matched = (k, v)
             break
 
-    if matched_nom is None:
+    if matched is None:
         return {"valid": False, "message": "Utilisateur inconnu. Contactez RaAina."}
 
-    stored_key = keys[matched_nom]
-    if stored_key.strip() != cle.strip():
+    if matched[1].strip() != cle.strip():
         return {"valid": False, "message": "Clé incorrecte. Contactez RaAina."}
 
-    # Vérifier expiration si définie
-    try:
-        expirations = st.secrets.get("expiration", {})
-        if matched_nom in expirations:
-            exp_date = datetime.strptime(expirations[matched_nom], "%Y-%m-%d").date()
-            now = datetime.now().date()
-            if exp_date < now:
-                days_ago = (now - exp_date).days
-                return {"valid": False, "message": f"Clé expirée depuis {days_ago} jour(s). Contactez RaAina."}
-            days_left = (exp_date - now).days
-            return {"valid": True, "message": f"Accès autorisé — expire dans {days_left} jour(s).", "nom": matched_nom}
-    except Exception:
-        pass
-
-    return {"valid": True, "message": "Accès autorisé.", "nom": matched_nom}
+    return {"valid": True, "message": "Accès autorisé.", "nom": matched[0]}
 
 
 def show_login_page():
-    """Affiche la page de connexion."""
     st.markdown("""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600&display=swap');
         html, body, [class*="css"] { background-color: #000000; color: #e8d5a3; font-family: 'Rajdhani', sans-serif; }
         .stApp { background-color: #000000; }
-
         .login-title {
             font-family: 'Orbitron', monospace;
             font-size: 2rem;
@@ -90,43 +60,10 @@ def show_login_page():
             letter-spacing: 0.3em;
             margin-bottom: 2rem;
         }
-        .gold-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #ffd700, #c8960c, #ffd700, transparent);
-            margin: 1.5rem 0;
-        }
-        div[data-testid="stTextInput"] label {
-            font-family: 'Orbitron', monospace !important;
-            font-size: 0.7rem !important;
-            color: #8b6914 !important;
-            letter-spacing: 0.1em !important;
-        }
-        div[data-testid="stTextInput"] input {
-            background-color: #0d0a00 !important;
-            border: 1px solid #3d2e00 !important;
-            color: #ffd700 !important;
-            font-family: 'Orbitron', monospace !important;
-            font-size: 0.85rem !important;
-        }
-        div[data-testid="stTextInput"] input:focus {
-            border-color: #ffd700 !important;
-            box-shadow: 0 0 8px rgba(255,215,0,0.3) !important;
-        }
-        .stButton > button {
-            background: linear-gradient(135deg, #8b6914, #c8960c, #ffd700) !important;
-            color: #000000 !important;
-            font-family: 'Orbitron', monospace !important;
-            font-weight: 700 !important;
-            font-size: 0.8rem !important;
-            letter-spacing: 0.15em !important;
-            border: none !important;
-            border-radius: 6px !important;
-            width: 100% !important;
-            margin-top: 1rem !important;
-        }
-        .stButton > button:hover {
-            box-shadow: 0 0 15px rgba(255,215,0,0.5) !important;
-        }
+        .gold-divider { height: 1px; background: linear-gradient(90deg, transparent, #ffd700, #c8960c, #ffd700, transparent); margin: 1.5rem 0; }
+        div[data-testid="stTextInput"] label { font-family: 'Orbitron', monospace !important; font-size: 0.7rem !important; color: #8b6914 !important; letter-spacing: 0.1em !important; }
+        div[data-testid="stTextInput"] input { background-color: #0d0a00 !important; border: 1px solid #3d2e00 !important; color: #ffd700 !important; font-family: 'Orbitron', monospace !important; }
+        .stButton > button { background: linear-gradient(135deg, #8b6914, #c8960c, #ffd700) !important; color: #000000 !important; font-family: 'Orbitron', monospace !important; font-weight: 700 !important; font-size: 0.8rem !important; letter-spacing: 0.15em !important; border: none !important; border-radius: 6px !important; width: 100% !important; margin-top: 1rem !important; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -135,7 +72,6 @@ def show_login_page():
         st.markdown('<div class="login-title">⚡ RaAina Macro Eco ⚡</div>', unsafe_allow_html=True)
         st.markdown('<div class="login-sub">◆ Accès Restreint ◆ Directed by RaAina ◆</div>', unsafe_allow_html=True)
         st.markdown('<div class="gold-divider"></div>', unsafe_allow_html=True)
-
         st.markdown('<p style="font-family:Orbitron;font-size:0.65rem;color:#5a4a1a;text-align:center;letter-spacing:0.1em;margin-bottom:1.5rem;">ENTREZ VOS IDENTIFIANTS POUR ACCÉDER AU DASHBOARD</p>', unsafe_allow_html=True)
 
         nom = st.text_input("👤 NOM D'UTILISATEUR", placeholder="Votre nom")
@@ -158,13 +94,9 @@ def show_login_page():
 
 
 def require_auth():
-    """Appeler en haut du dashboard."""
     if "authenticated" not in st.session_state:
         st.session_state["authenticated"] = False
-
     if not st.session_state["authenticated"]:
         show_login_page()
         st.stop()
-        return False
-
     return True
