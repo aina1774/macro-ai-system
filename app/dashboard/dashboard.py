@@ -126,7 +126,13 @@ def load_calendar():
     try:
         today = datetime.utcnow().strftime("%Y-%m-%d")
         end = (datetime.utcnow() + timedelta(days=30)).strftime("%Y-%m-%d")
-        key = os.getenv("FINNHUB_KEY","")
+        # Try Streamlit secrets first, then env variable
+        try:
+            key = st.secrets["api"]["FINNHUB_KEY"]
+        except Exception:
+            key = os.getenv("FINNHUB_KEY", "")
+        if not key:
+            return []
         url = f"https://finnhub.io/api/v1/calendar/economic?from={today}&to={end}&token={key}"
         r = requests.get(url, timeout=10)
         if r.status_code == 200:
