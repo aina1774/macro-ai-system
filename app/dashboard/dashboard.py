@@ -340,6 +340,61 @@ def render_dashboard():
 
     # CALENDRIER ECONOMIQUE
     st.markdown('<div class="section-header">◆ Calendrier Économique — Événements HIGH Impact</div>', unsafe_allow_html=True)
+    # Règle de lecture
+    st.markdown("""
+    <div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+        <div style="background:#0a0500;border:1px solid #ef5350;border-radius:6px;padding:6px 12px;font-family:Orbitron;font-size:0.6rem;color:#ef5350;">📈 Actuel &gt; Prévision → Surprise haussière</div>
+        <div style="background:#00051a;border:1px solid #26c6da;border-radius:6px;padding:6px 12px;font-family:Orbitron;font-size:0.6rem;color:#26c6da;">📉 Actuel &lt; Prévision → Surprise baissière</div>
+        <div style="background:#0a0800;border:1px solid #ffd700;border-radius:6px;padding:6px 12px;font-family:Orbitron;font-size:0.6rem;color:#ffd700;">➖ Actuel = Prévision → Peu de mouvement</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Dictionnaire impact trading
+    trading_signals = {
+        "inflation rate yoy": {"up": "💵▲ USD / 🥇▼ Or", "down": "💵▼ USD / 🥇▲ Or"},
+        "core inflation rate": {"up": "💵▲ USD hawkish", "down": "💵▼ USD dovish"},
+        "inflation rate mom": {"up": "💵▲ USD / taux▲", "down": "💵▼ USD / taux▼"},
+        "core inflation rate mom": {"up": "💵▲ USD / Fed hawkish", "down": "💵▼ USD"},
+        "core inflation rate yoy": {"up": "💵▲ USD / Fed hawkish", "down": "💵▼ USD dovish"},
+        "ppi mom": {"up": "🔥 Inflation future▲", "down": "🧊 Inflation future▼"},
+        "retail sales mom": {"up": "📈 Risk-on / USD▲", "down": "📉 Risk-off / USD▼"},
+        "fomc minutes": {"up": "🏦 Hawkish → USD▲", "down": "🏦 Dovish → USD▼"},
+        "nonfarm payrolls": {"up": "💼 Emploi fort → USD▲", "down": "💼 Emploi faible → USD▼"},
+        "gdp growth rate": {"up": "📈 Croissance → Risk-on", "down": "📉 Récession → Risk-off"},
+        "gdp mom": {"up": "📈 Croissance → Risk-on", "down": "📉 Contraction → Risk-off"},
+        "unemployment rate": {"up": "📉 Chômage▲ → USD▼", "down": "💪 Emploi fort → USD▲"},
+        "zew economic sentiment": {"up": "🟢 Optimisme → EUR▲", "down": "🔴 Pessimisme → EUR▼"},
+        "ifo business climate": {"up": "🟢 Confiance → EUR▲", "down": "🔴 Méfiance → EUR▼"},
+        "existing home sales": {"up": "🏠 Immo fort → USD▲", "down": "🏠 Immo faible → USD▼"},
+        "core pce price index": {"up": "💵▲ USD / Fed hawkish", "down": "💵▼ USD dovish"},
+        "building permits": {"up": "🏗️ Construction▲", "down": "🏗️ Construction▼"},
+        "housing starts": {"up": "🏠 Immo▲ → risk-on", "down": "🏠 Immo▼"},
+        "durable goods orders": {"up": "🏭 Industrie▲", "down": "🏭 Industrie▼"},
+    }
+
+    def get_signal(name, actual, forecast):
+        name_lower = name.lower()
+        signal_key = None
+        for key in trading_signals:
+            if key in name_lower:
+                signal_key = key
+                break
+        if not signal_key:
+            return "—"
+        try:
+            a = float(str(actual).replace(",","."))
+            f = float(str(forecast).replace(",","."))
+            if a > f:
+                return f'<span style="color:#ef5350;">{trading_signals[signal_key]["up"]}</span>'
+            elif a < f:
+                return f'<span style="color:#26c6da;">{trading_signals[signal_key]["down"]}</span>'
+            else:
+                return '<span style="color:#ffd700;">➖ Neutre</span>'
+        except Exception:
+            # Pas encore sorti
+            sig = trading_signals[signal_key]
+            return f'<span style="color:#5a4a1a;">▲ {sig["up"]}<br>▼ {sig["down"]}</span>'
+
     if calendar:
         cal_rows = ""
         for event in calendar[:25]:
@@ -349,13 +404,20 @@ def render_dashboard():
                 date_fmt = dt.strftime("%d/%m/%Y")
             except Exception:
                 date_fmt = date_str
-            name = event.get("event", event.get("name","?"))[:60]
+            name = event.get("event", event.get("name","?"))[:55]
             country = event.get("country","?").upper()
             actual = event.get("actual","—") or "—"
             forecast = event.get("estimate", event.get("forecast","—")) or "—"
             prev = event.get("prev","—") or "—"
-            cal_rows += f"<tr style='border-bottom:1px solid #1a1200;'><td style='padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#8b6914;white-space:nowrap;'>{date_fmt}</td><td style='padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#ffd700;white-space:nowrap;'>{country}</td><td style='padding:8px 12px;font-family:Rajdhani;font-size:0.82rem;color:#e8d5a3;'>{name}</td><td style='padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#00e676;'>{actual}</td><td style='padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#ffd700;'>{forecast}</td><td style='padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#5a4a1a;'>{prev}</td><td style='padding:8px 12px;font-family:Orbitron;font-size:0.65rem;'>🔴 HIGH</td></tr>"
-        st.markdown(f"""<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;background:#080600;border:1px solid #3d2e00;border-radius:8px;"><thead><tr style="background:linear-gradient(135deg,#1a1200,#2a1e00);border-bottom:1px solid #c8960c;"><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">DATE</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">PAYS</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">ÉVÉNEMENT</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">ACTUEL</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">PRÉVISION</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">PRÉCÉDENT</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">IMPACT</th></tr></thead><tbody>{cal_rows}</tbody></table></div>""", unsafe_allow_html=True)
+            signal_html = get_signal(name, actual, forecast)
+
+            # Couleur ligne selon si sorti ou pas
+            actual_color = "#00e676" if actual != "—" else "#3d2e00"
+            row_bg = "background:#0d0a00;" if actual != "—" else ""
+
+            cal_rows += f"<tr style='border-bottom:1px solid #1a1200;{row_bg}'><td style='padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#8b6914;white-space:nowrap;'>{date_fmt}</td><td style='padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#ffd700;white-space:nowrap;'>{country}</td><td style='padding:8px 12px;font-family:Rajdhani;font-size:0.85rem;color:#e8d5a3;'>{name}</td><td style='padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:{actual_color};'>{actual}</td><td style='padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#ffd700;'>{forecast}</td><td style='padding:8px 12px;font-family:Orbitron;font-size:0.65rem;color:#5a4a1a;'>{prev}</td><td style='padding:8px 12px;font-family:Rajdhani;font-size:0.8rem;'>{signal_html}</td></tr>"
+
+        st.markdown(f"""<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;background:#080600;border:1px solid #3d2e00;border-radius:8px;"><thead><tr style="background:linear-gradient(135deg,#1a1200,#2a1e00);border-bottom:1px solid #c8960c;"><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">DATE</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">PAYS</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#8b6914;">ÉVÉNEMENT</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#00e676;">ACTUEL</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#ffd700;">PRÉVISION</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#5a4a1a;">PRÉCÉDENT</th><th style="text-align:left;padding:10px 12px;font-family:Orbitron;font-size:0.6rem;color:#ffd700;">IMPACT TRADING</th></tr></thead><tbody>{cal_rows}</tbody></table></div>""", unsafe_allow_html=True)
     else:
         st.info("Calendrier indisponible — vérifiez la clé Finnhub.")
 
