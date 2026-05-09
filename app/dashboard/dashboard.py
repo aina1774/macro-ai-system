@@ -15,6 +15,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from config.settings import DASHBOARD
 from database.models.models import get_session, News, MacroScore, Alert, Scenario, FredData
+from app.auth import require_auth
 
 st.set_page_config(
     page_title="RaAina Macro Eco",
@@ -247,11 +248,15 @@ def load_alerts(limit=10):
 
 
 def render_dashboard():
+    # ── AUTH ──
+    require_auth()
+    nom = st.session_state.get("user_nom", "Utilisateur")
+
     # ── HEADER ──
     st.markdown('<div class="main-title">⚡ RaAina Macro Eco ⚡</div>', unsafe_allow_html=True)
     st.markdown('<div class="sub-title">◆ Directed by RaAina ◆ Institutional AI Analysis ◆</div>', unsafe_allow_html=True)
     st.markdown('<div class="gold-divider"></div>', unsafe_allow_html=True)
-    st.markdown(f'<div style="text-align:right;font-family:Orbitron;font-size:0.6rem;color:#5a4a1a;margin-top:-1rem;margin-bottom:1rem;">🕐 {datetime.utcnow().strftime("%Y-%m-%d %H:%M")} UTC</div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:right;font-family:Orbitron;font-size:0.6rem;color:#5a4a1a;margin-top:-1rem;margin-bottom:1rem;">🕐 {datetime.utcnow().strftime("%Y-%m-%d %H:%M")} UTC &nbsp;|&nbsp; 👤 {nom} &nbsp;|&nbsp; {st.session_state.get("auth_message","")}</div>', unsafe_allow_html=True)
 
     scores  = load_scores()
     alerts  = load_alerts()
