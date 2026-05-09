@@ -330,23 +330,72 @@ def render_dashboard():
 
     st.markdown('<div class="gold-divider"></div>', unsafe_allow_html=True)
 
-    # ── HISTORIQUE + SENTIMENT ──
+    # ── HEATMAP CALENDRIER + SENTIMENT ──
     col_hist, col_tone = st.columns([2,1])
     with col_hist:
-        st.markdown('<div class="section-header">◆ Historique des Scores (30j)</div>', unsafe_allow_html=True)
-        if not history.empty:
-            fig_h = go.Figure()
-            for col_name,color in [("USD Strength","#ffd700"),("Inflation Pressure","#ef5350"),("Recession Risk","#ffa726"),("Fear Index","#ab47bc")]:
-                if col_name in history.columns:
-                    fig_h.add_trace(go.Scatter(x=history["timestamp"],y=history[col_name],name=col_name,line=dict(color=color,width=2),mode="lines+markers",marker=dict(size=4)))
-            fig_h.update_layout(height=280,paper_bgcolor="#000000",plot_bgcolor="#080600",
-                font={"color":"#e8d5a3","family":"Orbitron","size":9},margin=dict(l=10,r=10,t=10,b=10),
-                legend=dict(orientation="h",y=-0.25,font={"size":8},bgcolor="rgba(0,0,0,0)"),
-                yaxis=dict(range=[0,100],gridcolor="#1a1200",color="#5a4a1a"),
-                xaxis=dict(gridcolor="#1a1200",color="#5a4a1a"))
-            st.plotly_chart(fig_h, use_container_width=True, key="hist")
+        st.markdown('<div class="section-header">◆ Heatmap Calendrier des Scores (30j)</div>', unsafe_allow_html=True)
+        if not history.empty and len(history) > 1:
+            score_cols = ["USD Strength","Inflation Pressure","Recession Risk","Fear Index"]
+            score_colors = {
+                "USD Strength": [[0,"#000814"],[0.3,"#1a1200"],[0.6,"#8b6914"],[1,"#ffd700"]],
+                "Inflation Pressure": [[0,"#000814"],[0.3,"#1a0000"],[0.6,"#8b0000"],[1,"#ef5350"]],
+                "Recession Risk": [[0,"#000814"],[0.3,"#1a0800"],[0.6,"#8b4500"],[1,"#ffa726"]],
+                "Fear Index": [[0,"#000814"],[0.3,"#0a001a"],[0.6,"#4a0080"],[1,"#ab47bc"]],
+            }
+            df = history.copy()
+            df["date"] = pd.to_datetime(df["timestamp"]).dt.date
+            df = df.groupby("date").mean(numeric_only=True).reset_index()
+            df["day"] = pd.to_datetime(df["date"]).dt.strftime("%d/%m")
+
+            fig_hm = go.Figure()
+            y_labels = []
+            for i, col_name in enumerate(score_cols):
+                if col_name in df.columns:
+                    y_labels.append(col_name)
+                    fig_hm.add_trace(go.Heatmap(
+                        z=[df[col_name].tolist()],
+                        x=df["day"].tolist(),
+                        y=[col_name],
+                        colorscale=score_colors[col_name],
+                        zmin=0, zmax=100,
+                        showscale=False,
+                        text=[[f"{v:.0f}" for v in df[col_name].tolist()]],
+                        texttemplate="%{text}",
+                        textfont=dict(size=8, family="Orbitron", color="rgba(255,255,255,0.7)"),
+                        hovertemplate=f"<b>{col_name}</b><br>Date: %{{x}}<br>Score: %{{z:.0f}}<extra></extra>",
+                    ))
+
+            fig_hm.update_layout(
+                height=220,
+                paper_bgcolor="#000000",
+                plot_bgcolor="#000000",
+                font={"color":"#e8d5a3","family":"Orbitron","size":8},
+                margin=dict(l=140,r=20,t=20,b=40),
+                xaxis=dict(
+                    gridcolor="#1a1200",color="#5a4a1a",
+                    tickfont=dict(size=7,family="Orbitron"),
+                    side="bottom",
+                ),
+                yaxis=dict(
+                    gridcolor="#1a1200",color="#8b6914",
+                    tickfont=dict(size=8,family="Orbitron"),
+                    autorange="reversed",
+                ),
+            )
+            st.plotly_chart(fig_hm, use_container_width=True, key="heatmap_cal")
+
+            # Légende couleur
+            st.markdown("""
+            <div style="display:flex;gap:1.5rem;margin-top:0.3rem;flex-wrap:wrap;">
+                <span style="font-family:Orbitron;font-size:0.6rem;color:#5a4a1a;">⬛ 0</span>
+                <span style="font-family:Orbitron;font-size:0.6rem;color:#8b6914;">■ 30</span>
+                <span style="font-family:Orbitron;font-size:0.6rem;color:#ffd700;">■ 60</span>
+                <span style="font-family:Orbitron;font-size:0.6rem;color:#ffffff;">■ 100</span>
+                <span style="font-family:Orbitron;font-size:0.6rem;color:#5a4a1a;margin-left:1rem;">Plus c'est clair = score élevé</span>
+            </div>
+            """, unsafe_allow_html=True)
         else:
-            st.info("Disponible après plusieurs cycles.")
+            st.info("Disponible après plusieurs cycles de collecte.")
 
     with col_tone:
         st.markdown('<div class="section-header">◆ Sentiment</div>', unsafe_allow_html=True)
