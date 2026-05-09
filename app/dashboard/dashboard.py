@@ -247,6 +247,53 @@ def load_alerts(limit=10):
         db.close()
 
 
+
+@st.cache_data(ttl=3600)
+def load_calendar():
+    try:
+        import requests
+        today = datetime.utcnow().strftime("%Y-%m-%d")
+        end = (datetime.utcnow() + timedelta(days=30)).strftime("%Y-%m-%d")
+        url = f"https://finnhub.io/api/v1/calendar/economic?from={today}&to={end}&token={os.getenv('FINNHUB_KEY','')}"
+        r = requests.get(url, timeout=10)
+        if r.status_code == 200:
+            data = r.json().get("economicCalendar", [])
+            return [e for e in data if e.get("impact","").lower() == "high"]
+        return []
+    except Exception:
+        return []
+
+
+@st.cache_data(ttl=60)
+def load_market_details():
+    results = {}
+    try:
+        import yfinance as yf
+        yf_map = {"EUR/USD":"EURUSD=X","NASDAQ":"^IXIC","XAU/USD":"GC=F","BTC/USD":"BTC-USD","DXY":"DX-Y.NYB"}
+        for label, ticker in yf_map.items():
+            try:
+                data = yf.Ticker(ticker).history(period="30d", interval="1d")
+                if not data.empty:
+                    high = data["High"].max()
+                    low = data["Low"].min()
+                    close = data["Close"].iloc[-1]
+                    vol = data["Volume"].iloc[-1]
+                    pivot = (data["High"].iloc[-1] + data["Low"].iloc[-1] + close) / 3
+                    r1 = 2 * pivot - data["Low"].iloc[-1]
+                    s1 = 2 * pivot - data["High"].iloc[-1]
+                    r2 = pivot + (data["High"].iloc[-1] - data["Low"].iloc[-1])
+                    s2 = pivot - (data["High"].iloc[-1] - data["Low"].iloc[-1])
+                    results[label] = {
+                        "close": close, "high_30d": high, "low_30d": low,
+                        "volume": vol, "r1": r1, "r2": r2, "s1": s1, "s2": s2,
+                    }
+            except Exception:
+                results[label] = None
+    except ImportError:
+        pass
+    return results
+
+
 def render_dashboard():
     # ── AUTH ──
     require_auth()
@@ -569,22 +616,6 @@ def render_dashboard():
     # ── CALENDRIER ECONOMIQUE ──
     st.markdown('<div class="section-header">◆ Calendrier Économique — Événements HIGH Impact</div>', unsafe_allow_html=True)
 
-    @st.cache_data(ttl=3600)
-    def load_calendar():
-        try:
-            import requests
-            from datetime import datetime, timedelta
-            today = datetime.utcnow().strftime("%Y-%m-%d")
-            end = (datetime.utcnow() + timedelta(days=30)).strftime("%Y-%m-%d")
-            url = f"https://finnhub.io/api/v1/calendar/economic?from={today}&to={end}&token={os.getenv('FINNHUB_KEY','')}"
-            r = requests.get(url, timeout=10)
-            if r.status_code == 200:
-                data = r.json().get("economicCalendar", [])
-                return [e for e in data if e.get("impact","").lower() == "high"]
-            return []
-        except Exception:
-            return []
-
     calendar = load_calendar()
 
     if calendar:
@@ -641,36 +672,6 @@ def render_dashboard():
 
     # ── NIVEAUX CLES + SPREAD + VOLUME ──
     st.markdown('<div class="section-header">◆ Niveaux Clés — Supports / Résistances / Spread / Volume</div>', unsafe_allow_html=True)
-
-    @st.cache_data(ttl=60)
-    def load_market_details():
-        ticker_map = {"EUR/USD":"EURUSD","NASDAQ":"IXIC","XAU/USD":"XAUUSD","BTC/USD":"BINANCE:BTCUSDT","DXY":"DXY"}
-        results = {}
-        try:
-            import yfinance as yf
-            yf_map = {"EUR/USD":"EURUSD=X","NASDAQ":"^IXIC","XAU/USD":"GC=F","BTC/USD":"BTC-USD","DXY":"DX-Y.NYB"}
-            for label, ticker in yf_map.items():
-                try:
-                    data = yf.Ticker(ticker).history(period="30d", interval="1d")
-                    if not data.empty:
-                        high = data["High"].max()
-                        low = data["Low"].min()
-                        close = data["Close"].iloc[-1]
-                        vol = data["Volume"].iloc[-1]
-                        pivot = (data["High"].iloc[-1] + data["Low"].iloc[-1] + close) / 3
-                        r1 = 2 * pivot - data["Low"].iloc[-1]
-                        s1 = 2 * pivot - data["High"].iloc[-1]
-                        r2 = pivot + (data["High"].iloc[-1] - data["Low"].iloc[-1])
-                        s2 = pivot - (data["High"].iloc[-1] - data["Low"].iloc[-1])
-                        results[label] = {
-                            "close": close, "high_30d": high, "low_30d": low,
-                            "volume": vol, "r1": r1, "r2": r2, "s1": s1, "s2": s2,
-                        }
-                except Exception:
-                    results[label] = None
-        except ImportError:
-            pass
-        return results
 
     market = load_market_details()
 
