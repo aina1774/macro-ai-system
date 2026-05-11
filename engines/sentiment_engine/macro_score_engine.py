@@ -238,7 +238,7 @@ class MacroScoreEngine:
 
         if news_stats["count"] == 0:
             print("⚠️  Pas assez de news pour calculer les scores.")
-            return None
+            # return None  # disabled
 
         usd_score, usd_label = self.calculate_usd_strength(news_stats)
         inf_score, inf_label = self.calculate_inflation_pressure(news_stats)
